@@ -1,0 +1,13 @@
+.character-list-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding-left: 24%;
+    flex-wrap: wrap;
+    color: white;
+}
+
+.character-name{
+    font-size: 1.6rem;
+}
