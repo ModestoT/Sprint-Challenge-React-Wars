@@ -9,10 +9,12 @@ class App extends Component {
     super();
     this.state = {
       starwarsChars: [],
+      temp: [],
       currentPage: 1,
       charPerPage: 6,
       id: ''
     };
+    this.dataHolder = [];
   }
 
   handlePage = e => {
@@ -22,6 +24,7 @@ class App extends Component {
   }
   componentDidMount() {
     this.getCharacters('https://swapi.co/api/people');
+    
   }
 
   getCharacters = URL => {
@@ -33,16 +36,30 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
-        console.log(data);
-        this.setState({ starwarsChars: data.results });
+        // console.log(data);
+        this.dataHolder = this.dataHolder.concat(data.results);
+        this.setState({ starwarsChars: this.dataHolder });
+        if(data.next !== null) {
+          this.getCharacters(data.next);
+        }
       })
       .catch(err => {
         throw new Error(err);
       });
   };
-
+//   getCharacters(URL1,URL2){
+//     Promise.all([
+//         fetch(URL1),
+//         fetch(URL2)
+//     ])
+//     .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+//     .then(([data1, data2]) => this.setState({
+//         starwarsChars: data1, 
+//         temp: data2
+//     }));
+// }
   render() {
-    // console.log(this.state.starwarsChars)
+    console.log(this.state.starwarsChars)
     
     return (
       <div className="App">
