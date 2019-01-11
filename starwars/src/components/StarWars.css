@@ -61,9 +61,10 @@ li:hover {
 .page-list:hover {
     transform: none;
     border: none;
-    box-shadow: none;
+    box-shadow: 0 0 5px red;
     color: grey;
     background: white;
+    z-index: 3;
 }
 
 .current-page {
