@@ -18,7 +18,7 @@ function PageNumbers (props) {
                         key={number}
                         id={number}
                         onClick={props.handlePage}
-                        className="page-list"
+                        className={`page-list ${(number === 1) ? 'current-page' : null}`}
                     >
                         {number}
                     </li>
