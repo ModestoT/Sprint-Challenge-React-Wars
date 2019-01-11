@@ -47,17 +47,7 @@ class App extends Component {
         throw new Error(err);
       });
   };
-//   getCharacters(URL1,URL2){
-//     Promise.all([
-//         fetch(URL1),
-//         fetch(URL2)
-//     ])
-//     .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
-//     .then(([data1, data2]) => this.setState({
-//         starwarsChars: data1, 
-//         temp: data2
-//     }));
-// }
+  
   render() {
     console.log(this.state.starwarsChars)
     
