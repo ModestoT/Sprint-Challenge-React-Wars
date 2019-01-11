@@ -65,3 +65,8 @@ li:hover {
     color: grey;
     background: white;
 }
+
+.current-page {
+    background: white;
+    color: black;
+}

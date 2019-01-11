@@ -19,6 +19,16 @@ class App extends Component {
 
   //method used to handle changing the page on the webpage
   handlePage = e => {
+    const pageList = document.querySelectorAll('.page-list');
+    const newPageList = Array.from(pageList);
+
+    newPageList.forEach(page => {
+      if(page.id === e.target.id){
+        page.classList.add('current-page');
+      } else {
+        page.classList.remove('current-page');
+      }
+    });
     this.setState({
       currentPage: e.target.id
     });
