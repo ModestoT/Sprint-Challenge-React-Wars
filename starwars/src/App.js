@@ -14,14 +14,17 @@ class App extends Component {
       charPerPage: 6,
       id: ''
     };
-    this.dataHolder = [];
+    this.dataHolder = []; //empty array made to temp hold the data being fetched from the api
   }
 
+  //method used to handle changing the page on the webpage
   handlePage = e => {
     this.setState({
       currentPage: e.target.id
     });
   }
+
+  //grabs the character data from the specificed api 
   componentDidMount() {
     this.getCharacters('https://swapi.co/api/people');
     
@@ -36,11 +39,11 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
-        console.log(data.results[0].films);
-        this.dataHolder = this.dataHolder.concat(data.results);
-        this.setState({ starwarsChars: this.dataHolder });
-        if(data.next !== null) {
-          this.getCharacters(data.next);
+        // console.log(data.results[0].films);
+        this.dataHolder = this.dataHolder.concat(data.results); //adds the new data from each fetch call to the temp array
+        this.setState({ starwarsChars: this.dataHolder }); //sets the state of the main array to be what the temp array is holding
+        if(data.next !== null) { //if statement used to stop the fetch call when there is no more pages to get data from
+          this.getCharacters(data.next); //recalls the get character data method to continue to add data to the temp array until their is no more pages left
         }
       })
       .catch(err => {
