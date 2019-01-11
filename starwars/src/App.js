@@ -8,10 +8,17 @@ class App extends Component {
     super();
     this.state = {
       starwarsChars: [],
+      currentPage: 1,
+      charPerPage: 6,
       id: ''
     };
   }
 
+  handlePage = e => {
+    this.setState({
+      currentPage: e.target.id
+    });
+  }
   componentDidMount() {
     this.getCharacters('https://swapi.co/api/people');
   }
@@ -25,6 +32,7 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
+        console.log(data);
         this.setState({ starwarsChars: data.results });
       })
       .catch(err => {
@@ -33,11 +41,13 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.starwarsChars)
+    // console.log(this.state.starwarsChars)
+    
     return (
       <div className="App">
         <h1 className="Header">React Wars</h1>
-        <CharacterList characterDataList={this.state.starwarsChars}/>
+        <CharacterList characterDataList={this.state.starwarsChars} currentPage={this.state.currentPage} charPerPage={this.state.charPerPage}/>
+        
       </div>
     );
   }
