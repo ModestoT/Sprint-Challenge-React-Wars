@@ -36,7 +36,7 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
-        // console.log(data);
+        console.log(data.results[0].films);
         this.dataHolder = this.dataHolder.concat(data.results);
         this.setState({ starwarsChars: this.dataHolder });
         if(data.next !== null) {
@@ -47,9 +47,9 @@ class App extends Component {
         throw new Error(err);
       });
   };
-  
+
   render() {
-    console.log(this.state.starwarsChars)
+    // console.log(this.state.starwarsChars)
     
     return (
       <div className="App">
