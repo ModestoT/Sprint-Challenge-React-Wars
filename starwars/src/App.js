@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import CharacterList from './components/CharacterList';
+import PageNumbers from './components/PageNumbers';
 
 class App extends Component {
   constructor() {
@@ -47,7 +48,7 @@ class App extends Component {
       <div className="App">
         <h1 className="Header">React Wars</h1>
         <CharacterList characterDataList={this.state.starwarsChars} currentPage={this.state.currentPage} charPerPage={this.state.charPerPage}/>
-        
+        <PageNumbers characterDataList={this.state.starwarsChars} charPerPage={this.state.charPerPage} handlePage={this.handlePage}/>
       </div>
     );
   }
